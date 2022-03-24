@@ -5,20 +5,15 @@
 <div class="masthead">
     <div class="container">
         <div class="row g-0">
-            <div class="col-md-6 masthead-text">
-                <!-- Post title goes in these h1 tags -->
-                <h1 class="post-title">
+                <h1 class="n-title text-center">
                     {{ post.title }}
                 </h1>
-                <!-- Post artist goes before the | the post's created date goes after -->
-                <p class="post-subtitle"> {{ post.artist }} | {{ post.created_on }} </p>
-            </div>
-            <div class="d-none d-md-block col-md-6 masthead-image">
+            <div class="col-md-6 offset-md-3">
                 <!-- The featured image URL goes in the src attribute -->
                 {% if "placeholder" in post.featured_image.url %}
-                <img src="https://res.cloudinary.com/ellascloud/image/upload/v1644424356/sample.jpg" width="100%">
+                <img src="https://res.cloudinary.com/ellascloud/image/upload/v1644424356/sample.jpg" class="home-card" width="100%">
                 {% else %}
-                <img src=" {{ post.featured_image.url }} " width="100%">
+                <img src=" {{ post.featured_image.url }} " class="home-card" width="100%">
                 {% endif %}
             </div>
         </div>
@@ -27,11 +22,12 @@
 
 <div class="container">
     <div class="row">
-        <div class="col card mb-4  mt-3 left  top">
-            <div class="card-body">
+        <div class="col card mb-4  mt-3 left top  home-card">
+                <p class="card-text">
+                    <div class="card-body">
                 <!-- The post content goes inside the card-text. -->
                 <!-- Use the | safe filter inside the template tags -->
-                <p class="card-text ">
+                <p class="card-text">
                     {{ post.content | safe }}
                 </p>
                 <div class="row">
@@ -76,7 +72,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8 card mb-4  mt-3 ">
+        <div class="col-md-6 card mb-4  mt-3  home-card">
             <h3>Comments:</h3>
             <div class="card-body">
                 <!-- We want a for loop inside the tags to iterate through each comment in comments -->
@@ -98,7 +94,7 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="col-md-4 card mb-4  mt-3 ">
+        <div class="col-md-4 card mb-4  mt-3 offset-md-2 home-card">
             <div class="card-body">
                 {% if commented %}
                 <div class="alert alert-dark" role="alert">
@@ -115,6 +111,8 @@
                     {% csrf_token %}
                     <button type="submit" class="btn btn-signup btn-lg">Submit</button>
                 </form>
+                {% else %}
+                <h3 class="text-center">If you want to leave a comment please <a id="login-link" href="{% url 'account_login' %}">login!</a></h3>
                 {% endif %}
                 {% endif %}
             </div>

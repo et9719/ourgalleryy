@@ -40,7 +40,7 @@
 
 .card {
     border: none;
-    background-color: #ffd966;
+    background-color: rgb(255,217,102, 0.75);
 }
 
 .author {
@@ -176,14 +176,29 @@
 
 /* news */
 
+.news-posts {
+    margin-top: 2.5%;
+    box-shadow: 5px 10px 10px rgb(78, 77, 77);
+    padding: 0;
+}
+
 .news-title {
     margin: 5%;
 }
 
-.news-img, .news-container {
-    margin-bottom: 5%;
+.n-title {
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 
+.news-img, .news-container {
+    margin-bottom: 5%;
+    box-shadow: 5px 10px 10px rgb(78, 77, 77);
+}
+
+#login-link {
+    color: black;
+}
 
 
 /* .image-flash {
