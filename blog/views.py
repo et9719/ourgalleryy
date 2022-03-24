@@ -2,7 +2,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Post
+from .models import Post, NewsPost
 from .forms import CommentForm
 
 
@@ -97,3 +97,35 @@ class PostLike(View):
             post.likes.add(request.user)
         # Define where we want to redirect the user when a page is liked or unliked.
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+class NewsPostList(generic.ListView):
+    ''' What the users should be able to see on the site '''
+    # What model we are using for this view
+    model = NewsPost
+    # Only show posts that have a status of published and order
+    # them by the date they were created on.
+    queryset = NewsPost.objects.filter(status=1).order_by('-created_on')
+    # What page users will see this on
+    template_name = 'news.html'
+    # how many posts we want to see on the page at one time.
+    paginate_by = 6
+
+
+class NewsPostDetail(View):
+    ''' Add definition '''
+    def get(self, request, slug, *args, **kwargs):
+        """ Add description """
+        # First filter through the post so we get just the active ones.
+        queryset = NewsPost.objects.filter(status=1)
+        # Get specific post via its slug.
+        newspost = get_object_or_404(queryset, slug=slug)
+
+        # return render(request, "news_detail.html")
+        return render(
+            request,
+            "news_detail.html",
+            {
+                "newspost": newspost,
+            }
+        )

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        {% for newspost in newspost_list %}
+        <div class="col-md-8 offset-md-2 news-posts">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="image-container">
+                                {% if "placeholder" in newspost.featured_image.url %}
+                                <!--If the default word placeholder is found in the url
+                                then show this default image. -->
+                                <img class="card-img-top"
+                                    src="https://res.cloudinary.com/ellascloud/image/upload/v1644424356/sample.jpg">
+                                {% else %}
+                                <!-- If placeholder is not fould in the url then show the featured image. --> 
+                                <img class="card-img-top" src=" {{ newspost.featured_image.url }}">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <a href="{% url 'news_detail' newspost.slug %}" class="post-link">
+                                <h2 class="card-title">{{ newspost.title }}</h2>
+                                <p class="card-text"></p>
+                                <p class="card-text">{{ newspost.excerpt }}</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% if is_paginated %}
+    <!-- If there are enough posts on the page for it to be paginated, then 
+    show these buttons at the bottom of the page -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+{%endblock%}
+
