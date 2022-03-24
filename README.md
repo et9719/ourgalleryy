@@ -1,1 +1,0 @@
-{% url 'post_like' post.slug %}
