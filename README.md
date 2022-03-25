@@ -2,20 +2,36 @@
 
 ## Introduction
 
-My Our Gallery project is a fun online gallery blog, it allows users to discus the art with eachother by leaving comments and liking the art pieces.
+My Our Gallery project is a fun online gallery blog for art lovers. It allows users to discuss the art with each other by leaving comments and liking the art pieces.
 
-The admin of the site will be able to create new posts to show differnt pieces of art, they will be able to read what they have posted, upate the posts and delete them if and when nessasary. This shows the use of CRUD functionality in the project. The users will also be able to create, read, update and delete their comments making use of this functionality for both the users and admin of the site.
+The admin of the site will be able to create new posts to show different pieces of art, they will be able to read what they have posted, update the posts and delete them if and when necessary. This shows the use of CRUD functionality in the project. The users will also be able to create, read, update and delete their comments making use of this functionality for both the users and admin of the site.
 
 <img src="images/responsive.png" alt="Live website image"> 
 
-[Click here to go to the live website!](<!--Add Website Link-->) 
+[Click here to go to the live website!](https://ourgalleryy.herokuapp.com/) 
 
 1. [Wireframes](#wireframes)
-
 2. [User Stories](#user-stories)
 3. [Objectives](#objectives)
-
 4. [Features](#features)
+    - [Navigation Bar](#navigation-bar)
+    - [Links](#links)
+    - [News Posts](#news-posts)
+    - [Gallery Posts](#gallery-posts)
+    - [Comments](#comments)
+    - [Like](#like)
+    - [Message](#message)
+    - [Register](#register)
+    - [Login](#login)
+    - [Logout](#logout)
+5. [Testing](#testing)
+    - [HTML](#html)
+    - [CSS](#css)
+    - [Python](#python)
+    - [Manual Testing](#manual-testing)
+6. [Bugs](#bugs)
+7. [Deployment](#deployment)
+8. [Credits](#credits)
   
 ## Wireframes
 
@@ -34,17 +50,15 @@ The admin of the site will be able to create new posts to show differnt pieces o
 ### News Details
 <img src="images/wire-news-det.png" alt="wireframe for news details page">
 
-
 ## User Stories
 
 I used the GitHub projects board to log my user stories to help me manage my project. 
-This helped me break the project down into smaller tasks that would be more manageable by moving them into the in progrss section whilst I focused on them. once a task was complete I could move it into the done section to help me see my progress.
+This helped me break the project down into smaller tasks that would be more manageable by moving them into the in-progress section whilst I focused on them. once a task was complete, I could move it into the done section to help me see my progress.
 
 <img src="images/userstory1.png" alt="user stories">
 <img src="images/userstory2.png" alt="user stories">
 <img src="images/userstory3.png" alt="user stories">
 <img src="images/userstory4.png" alt="user stories">
-
 
 ## Objectives
 
@@ -58,7 +72,7 @@ This helped me break the project down into smaller tasks that would be more mana
     - Was this achieved?
         - Yes
     - How was this achieved?
-        - In the post model there is a slug field, this means that each post can have their own url, so when the user clicks on the title they are taken to the posts individual page to see more detail on that piece.
+        - In the post model there is a slug field, this means that each post can have their own URL, so when the user clicks on the title they are taken to the posts individual page to see more detail on that piece.
 
 - I want the users to be able to register for an account on the site.
     - Was this achieved?
@@ -66,11 +80,11 @@ This helped me break the project down into smaller tasks that would be more mana
     - How was this achieved?
         - I used allauth to create three pages one to log in, one to log out and one to register as a user.
 
-- When the user has an account I want the users to be able to like a piece.
+- When the user has an account, I want the users to be able to like a piece.
     - Was this achieved?
         - Yes
     - How was this achieved?
-        - In views.py I created a class called PostLike, it has an if statement that toggles the like button inside so it checks if a logged in user has already liked a post and if yes, when it clicked it unlikes the post or if not then when clicked it likes it.
+        - In views.py I created a class called PostLike, it has an if statement that toggles the like button inside, so it checks if a logged in user has already liked a post and if yes, when it clicked it unlikes the post or if not then when clicked it likes it.
 
 - I also want the users to be able to see how many likes a piece already has.
     - Was this achieved?
@@ -78,7 +92,7 @@ This helped me break the project down into smaller tasks that would be more mana
     - How was this achieved?
         - in models.py within the post class i defined number of likes and returned self.likes.count() so that it would add the amount 0f likes up and return it to the page.
 
-- when the user has an account I want the users to be able to comment on a piece of art.
+- when the user has an account, I want the users to be able to comment on a piece of art.
     - Was this achieved?
         - Yes
     - How was this achieved?
@@ -88,19 +102,19 @@ This helped me break the project down into smaller tasks that would be more mana
     - Was this achieved?
         - Yes
     - How was this achieved?
-        - In views.py post details view I rendered the comment form so if a users comment has been approved it can show in the post details html pages.
+        - In views.py post details view I rendered the comment form so if a user’s comment has been approved it can show in the post details html pages.
 
 - I want the admin to be able to create, read, update and delete posts of art pieces on the site.
     - Was this achieved?
         - Yes
     - How was this achieved?
-        - when adding /admin to the end of the home url the admin can login and create new posts.
+        - when adding /admin to the end of the home URL the admin can login and create new posts.
 
 - I want the admin to be able to approve or disapprove comments on the site to filter unwanted comments.
     - Was this achieved?
         - Yes
     - How was this achieved?
-        - In the admin.py file within the class commentadmin I added an action of approve comment, this allows the admin to approve a comment when they are logged into the admin pannel.
+        - In the admin.py file within the class commentadmin I added an action of approve comment, this allows the admin to approve a comment when they are logged into the admin panel.
 
 ## Features
 
@@ -113,7 +127,7 @@ This helped me break the project down into smaller tasks that would be more mana
 
 ### Links
 
-- On the home page i have two links that are used to take the user to the two main pages on the site.
+- On the home page I have two links that are used to take the user to the two main pages on the site.
 
 <img src="images/home-func.png" alt="link function">
 
@@ -125,19 +139,19 @@ This helped me break the project down into smaller tasks that would be more mana
 
 ### Gallery Posts
 
--  Each gallery post contains a link in its title, these links take the user to the relevent gallery post detail page to read more. 
+-  Each gallery post contains a link in its title, these links take the user to the relevant gallery post detail page to read more. 
 
 <img src="images/gallery-func.png" alt="gallery post function">
 
 ### Comments
 
-- Within each gallery post details page the is a comment section, this allows the user to interact with the site, and have converstions about the art shown.
+- Within each gallery post details page the is a comment section, this allows the user to interact with the site, and have conversations about the art shown.
 
 <img src="images/comment.png" alt="comment function">
 
 ### Like
 
-- On each gallery post in their details page you have the abaility to like or dislike a post
+- On each gallery post in their details page you have the ability to like or dislike a post
 
 <img src="images/like.png" alt="like function">
 
@@ -161,7 +175,7 @@ This helped me break the project down into smaller tasks that would be more mana
 
 ### Logout
 
-- the log out function allows the user to signout after they are finished on the site.
+- the log out function allows the user to sign out after they are finished on the site.
 
 <img src="images/logout.png" alt="logout function">
 
@@ -181,25 +195,24 @@ The following errors/warnings were found:
 Retested: Warning cleared
 
 2. An image must have an alt attribute.
-    - Hor both of these errors I added and alt attribute to the images that have details of the image just incase the image doesn't load.
+    - For both of these errors I added and alt attribute to the images that have details of the image just in case the image doesn't load.
 
 Retested: Error cleared
 
 <img src="images/html-gallery.png" alt="Testing html for gallery page">
 
 1. An image must have an alt attribute.
-    - I had made the same mistake of forgetting to add an alt attribute on the gallery page so folloed the same process to fix these errors.
+    - I had made the same mistake of forgetting to add an alt attribute on the gallery page so followed the same process to fix these errors.
 
 Retested: Error cleared
 
 <img src="images/html-news-det.png" alt="Testing html for news detail pages">
 
 1. Bad value on image element
-    - To fix this I put it into the css style sheet.
+    - To fix this I put it into the CSS style sheet.
 
 2. The font element is obsolete 
-    - I didnt recognise this code so I searched for the code it gave me on the error page in my base.html and news_detail.html files and no results were found, im unsure where it has pulled this code from, and I believe the third error is also in relation to this.
-
+    - I didn’t recognise this code so I searched for the code it gave me on the error page in my base.html and news_detail.html files and no results were found, I’m unsure where it has pulled this code from, and I believe the third error is also in relation to this.
 
 <img src="images/html-gallery-det.png" alt="Testing html for gallery detail pages">
 
@@ -207,8 +220,7 @@ Retested: Error cleared
     - I didn't recognise this code so I searched for h2 in my base.html and news_detail.html files and no results were found.
 
 2. No p element in scope but a p end tag seen.
-    - i searched for a stray </p> but non were found in either file.
-
+    - i searched for a stray </p> but none were found in either file.
 
 ### CSS
  
@@ -217,10 +229,10 @@ CSS was tested using the official [(Jigsaw) validator](https://jigsaw.w3.org/css
 No errors were found:
 
 <img src="images/css-home.png" alt="Testing css for home page">
-<img src="images/css-gallery.png" alt="Testing css for gallery page">
-<img src="images/css-gallery-det.png" alt="Testing css for gallery details pages">
-<img src="images/css-news.png" alt="Testing css for news page">
-<img src="images/css-news-det.png" alt="Testing css for news details pages">
+<img src="images/css-gallery.png" alt="Testing CSS for gallery page">
+<img src="images/css-gallery-det.png" alt="Testing CSS for gallery details pages">
+<img src="images/css-news.png" alt="Testing CSS for news page">
+<img src="images/css-news-det.png" alt="Testing CSS for news details pages">
 
 ### Python
  
@@ -230,7 +242,7 @@ The following errors were found:
 
 <img src="images/py.png" alt="Testing python">
 
-To fix these all i had to do was extend the code onto the next line, all of these errors were caused by comments.
+To fix these all I had to do was extend the code onto the next line, all of these errors were caused by comments.
 
 ### Manual Testing 
 
@@ -245,8 +257,8 @@ Navbar: logout | Takes user to the log out page  | Yes | N/A
 Register: Sign up button | Allows user to sign up  | Yes | N/A
 Login: Sign in button | Allows user to sign in  | Yes | N/A
 Logout: Sign out button | Allows user to sign out  | Yes | N/A
-News: News post slug links | Takes user to relevent news post details page  | Yes | N/A
-Gallery: Post slug link | Takes user to relevent post details page | Yes | N/A
+News: News post slug links | Takes user to relevant news post details page  | Yes | N/A
+Gallery: Post slug link | Takes user to relevant post details page | Yes | N/A
 Gallery posts: like and unlike button | Allows user to like or unlike a post when logged in  | Yes | N/A
 Gallery posts: Submit button | Allows user to leave a comment for the admin to validate and eventually for everyone to view on the page  | Yes | N/A
 
@@ -256,14 +268,14 @@ I ran into this error message:
 
 <img src="images/error.png" alt="error message">
 
-I realised that i was missing news/ from my news/< slug:slug >/ in my urls.py file, when i changed that it wored but my page wasn't rendering correctly.
+I realised that I was missing news/ from my news/< slug:slug >/ in my urls.py file, when I changed that it worked but my page wasn't rendering correctly.
 
-This is how it rendered:
+This is how it rendered:	
 
 <img src="images/render.png" alt="image of how page was rendering incorrectly">
 
 I originally had written return render(request, "news_detail.html")
-so i tried this:
+so I tried this:
 
 <img src="images/fix2.png" alt="image of how I tried to fix">
 
@@ -271,7 +283,24 @@ This didnt work so I also tried:
 
 <img src="images/fix.png" alt="image of how I tried to fix">
 
-Then I noticed a spelling error in the first attempt I had written new_detail.html when I was supose to write news_detail.html and then it all worked.
+Then I noticed a spelling error in the first attempt I had written new_detail.html when I was supposed to write news_detail.html and then it all worked.
+
+## Deployment
+
+- Create a new app on heroku 
+- In resources add heroku postgres
+- In settings review config vars, copy the DATABASE_URL
+- In gitpod make a file called env.py, use this to store our environment variables.
+- make sure env.py is in gitignore file
+- Add your secret key environment variable to both the env.py file and heroku config vars
+- Reference the env file in the settings.py file.
+- Add the secret key environment variable to settings.py.
+- Highlight database section and comment it out, 
+replace with the following:
+DATABASES = {
+   'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
+- run migrations
 
 ## Credits
 

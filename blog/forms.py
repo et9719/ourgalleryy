@@ -1,4 +1,4 @@
-''' Imports '''
+''' Imports '''''' Imports '''
 from django import forms
 from .models import Comment
 
@@ -9,5 +9,5 @@ class CommentForm(forms.ModelForm):
         ''' Add Description '''
         # Model we want to use.
         model = Comment
-        # What feilds we want to use.
+        # What fields we want to use.
         fields = ('body',)

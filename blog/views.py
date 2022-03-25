@@ -15,14 +15,14 @@ class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     # What page users will see this on
     template_name = 'gallery.html'
-    # how many posts we want to see on the page at one time.
+    # How many posts we want to see on the page at one time.
     paginate_by = 6
 
 
 class PostDetail(View):
-    ''' Add definition '''
+    ''' Add view for each individual post'''
     def get(self, request, slug, *args, **kwargs):
-        """ Add description """
+        """ Get comments for each post """
         # First filter through the post so we get just the active ones.
         queryset = Post.objects.filter(status=1)
         # Get specific post via its slug.
@@ -46,7 +46,7 @@ class PostDetail(View):
         )
 
     def post(self, request, slug, *args, **kwargs):
-        """ Add description """
+        """ post comments for each post """
         # First filter through the post so we get just the active ones.
         queryset = Post.objects.filter(status=1)
         # Get specific post via its slug.
@@ -66,7 +66,7 @@ class PostDetail(View):
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()
-        # if form is not valid, return empty comment form.
+        # If form is not valid, return empty comment form.
         else:
             comment_form = CommentForm()
 
@@ -84,16 +84,17 @@ class PostDetail(View):
 
 
 class PostLike(View):
-    ''' Add description '''
+    ''' Allow users to like or unlike a post '''
     def post(self, request, slug):
-        ''' Add description'''
-        # Get the relevent post.
+        ''' Find out if user has liked it or not and
+            allow user to toggle between the two '''
+        # Get the relevant post.
         post = get_object_or_404(Post, slug=slug)
         # Toggle likes, check if post is already like
         # If it is then then remove the like.
         if post.likes.filter(id=request.user.id).exists():
             post.likes.remove(request.user)
-        # If it hasnt been liked we need to add the like.
+        # If it hasn’t been liked we need to add the like.
         else:
             post.likes.add(request.user)
         # Define where we want to redirect the
@@ -115,15 +116,14 @@ class NewsPostList(generic.ListView):
 
 
 class NewsPostDetail(View):
-    ''' Add definition '''
+    ''' Add view to allow users to see each news post '''
     def get(self, request, slug, *args, **kwargs):
-        """ Add description """
+        """ get active posts, get slug for each one and
+            render relevant post """
         # First filter through the post so we get just the active ones.
         queryset = NewsPost.objects.filter(status=1)
         # Get specific post via its slug.
         newspost = get_object_or_404(queryset, slug=slug)
-
-        # return render(request, "news_detail.html")
         return render(
             request,
             "news_detail.html",

@@ -35,7 +35,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    '''  All information needed to create a comment'''
+    ''' All information needed to create a comment'''
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name="comments"
     )
@@ -58,9 +58,6 @@ class NewsPost(models.Model):
     ''' All information needed to create a post '''
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    # artist = models.ForeignKey(
-    #     User, on_delete=models.CASCADE, related_name="blog_posts"
-    # )
     updated_on = models.DateTimeField(auto_now_add=True)
     description = models.TextField()
     content = models.TextField()
