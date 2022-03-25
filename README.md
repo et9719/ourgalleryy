@@ -20,19 +20,31 @@ The admin of the site will be able to create new posts to show differnt pieces o
 ## Wireframes
 
 ### Home 
-<img src="static/images/" alt="wireframe for home page">
-<img src="static/images/" alt="wireframe for mobile home page">
+<img src="images/wire-home.png" alt="wireframe for home page">
+
+### Gallery
+<img src="images/wire-gallery.png" alt="wireframe for gallery page">
+
+### Gallery Details
+<img src="images/wire-gallery-det.png" alt="wireframe for gallery details page">
+
+### News
+<img src="images/wire-news.png" alt="wireframe for news page">
+
+### News Details
+<img src="images/wire-news-det.png" alt="wireframe for news details page">
+
 
 ## User Stories
 
 I used the GitHub projects board to log my user stories to help me manage my project. 
 This helped me break the project down into smaller tasks that would be more manageable by moving them into the in progrss section whilst I focused on them. once a task was complete I could move it into the done section to help me see my progress.
 
+<img src="images/userstory1.png" alt="user stories">
+<img src="images/userstory2.png" alt="user stories">
+<img src="images/userstory3.png" alt="user stories">
+<img src="images/userstory4.png" alt="user stories">
 
-<img src="static/#" alt="user stories">
-<img src="static/#" alt="user stories">
-<img src="static/#" alt="user stories">
-<img src="static/#" alt="user stories">
 
 ## Objectives
 
@@ -92,9 +104,66 @@ This helped me break the project down into smaller tasks that would be more mana
 
 ## Features
 
+### Navigation Bar
 
+- The navigation bar contains the links needed to use the website easily. This changes how it looks depending on a couple of things, if the user is logged in or out but also depending on the size of the screen it is being viewed on.
+<img src="images/nav.png" alt="Navigation function">
+<img src="images/nav2.png" alt="Navigation function">
+<img src="images/nav3.png" alt="Navigation function">
 
+### Links
 
+- On the home page i have two links that are used to take the user to the two main pages on the site.
+
+<img src="images/home-func.png" alt="link function">
+
+### News Posts
+
+- Each news post contains a link in its title, these links take the user to the relevent news post detail page to read more. 
+
+<img src="images/news-func.png" alt="news post function">
+
+### Gallery Posts
+
+-  Each gallery post contains a link in its title, these links take the user to the relevent gallery post detail page to read more. 
+
+<img src="images/gallery-func.png" alt="gallery post function">
+
+### Comments
+
+- Within each gallery post details page the is a comment section, this allows the user to interact with the site, and have converstions about the art shown.
+
+<img src="images/comment.png" alt="comment function">
+
+### Like
+
+- On each gallery post in their details page you have the abaility to like or dislike a post
+
+<img src="images/like.png" alt="like function">
+
+### Message
+
+- when a user logs in or out they will see a message pop up and automatically leave after a few seconds.
+
+<img src="images/message.png" alt="message function">
+
+### Register
+
+- The register function allows the user to create a profile so that they can log in and out of the site.
+
+<img src="images/register.png" alt="register function">
+
+### Login
+
+- The login function allows the user to log into their account so that they can like a post or leave a comment.
+
+<img src="images/login.png" alt="login function">
+
+### Logout
+
+- the log out function allows the user to signout after they are finished on the site.
+
+<img src="images/logout.png" alt="logout function">
 
 images from : https://www.istockphoto.com/
 
