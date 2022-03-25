@@ -89,13 +89,15 @@ class PostLike(View):
         ''' Add description'''
         # Get the relevent post.
         post = get_object_or_404(Post, slug=slug)
-        # Toggle likes, check if post is already like if it is then then remove the like.
+        # Toggle likes, check if post is already like
+        # If it is then then remove the like.
         if post.likes.filter(id=request.user.id).exists():
             post.likes.remove(request.user)
         # If it hasnt been liked we need to add the like.
         else:
             post.likes.add(request.user)
-        # Define where we want to redirect the user when a page is liked or unliked.
+        # Define where we want to redirect the
+        # user when a page is liked or unliked.
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 

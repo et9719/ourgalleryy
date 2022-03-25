@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %} {% block content %}
 
 {% load crispy_forms_tags %}
@@ -13,9 +14,10 @@
     <div class="col-md-6 offset-md-3">
         <!-- The featured image URL goes in the src attribute -->
         {% if "placeholder" in newspost.featured_image.url %}
-        <img src="https://res.cloudinary.com/ellascloud/image/upload/v1644424356/sample.jpg" width="100%"class="news-img">
+        <img src="https://res.cloudinary.com/ellascloud/image/upload/v1644424356/sample.jpg" class="news-img image-width"
+        alt="news posts featured image">
         {% else %}
-        <img src=" {{ newspost.featured_image.url }} " width="100%" class="news-img">
+        <img src=" {{ newspost.featured_image.url }} " class="news-img image-width" alt="news posts featured image">
         {% endif %}
     </div>
 </div>
@@ -25,7 +27,7 @@
             <div class="card-body "> 
                 <p class="card-text ">
                     {{ newspost.content | safe }}
-                </p>       
+                </p>   
             </div>         
         </div>
     </div>

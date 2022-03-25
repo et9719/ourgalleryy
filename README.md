@@ -6,7 +6,7 @@ My Our Gallery project is a fun online gallery blog, it allows users to discus t
 
 The admin of the site will be able to create new posts to show differnt pieces of art, they will be able to read what they have posted, upate the posts and delete them if and when nessasary. This shows the use of CRUD functionality in the project. The users will also be able to create, read, update and delete their comments making use of this functionality for both the users and admin of the site.
 
-<img src=" <!--Add Live Web Image--> " alt="Live website image"> 
+<img src="images/responsive.png" alt="Live website image"> 
 
 [Click here to go to the live website!](<!--Add Website Link-->) 
 
@@ -165,7 +165,120 @@ This helped me break the project down into smaller tasks that would be more mana
 
 <img src="images/logout.png" alt="logout function">
 
-images from : https://www.istockphoto.com/
+## Testing
+
+### HTML
+
+HTML was tested using the official [W3C validator](https://validator.w3.org/nu/) 
+
+The following errors/warnings were found:
+
+<img src="images/html-home.png" alt="Testing html for home page">
+
+1. lang missing from <html> tag.
+    - To fix this i just added lang="en" to the <html> tag.
+
+Retested: Warning cleared
+
+2. An image must have an alt attribute.
+    - Hor both of these errors I added and alt attribute to the images that have details of the image just incase the image doesn't load.
+
+Retested: Error cleared
+
+<img src="images/html-gallery.png" alt="Testing html for gallery page">
+
+1. An image must have an alt attribute.
+    - I had made the same mistake of forgetting to add an alt attribute on the gallery page so folloed the same process to fix these errors.
+
+Retested: Error cleared
+
+<img src="images/html-news-det.png" alt="Testing html for news detail pages">
+
+1. Bad value on image element
+    - To fix this I put it into the css style sheet.
+
+2. The font element is obsolete 
+    - I didnt recognise this code so I searched for the code it gave me on the error page in my base.html and news_detail.html files and no results were found, im unsure where it has pulled this code from, and I believe the third error is also in relation to this.
 
 
-gallery content: https://visitlondon.com/things-to-do/whats-on/art-and-exhibitions/top-10-exhibitions
+<img src="images/html-gallery-det.png" alt="Testing html for gallery detail pages">
+
+1. Element div not allowed as child of element h2 
+    - I didn't recognise this code so I searched for h2 in my base.html and news_detail.html files and no results were found.
+
+2. No p element in scope but a p end tag seen.
+    - i searched for a stray </p> but non were found in either file.
+
+
+### CSS
+ 
+CSS was tested using the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/)
+
+No errors were found:
+
+<img src="images/css-home.png" alt="Testing css for home page">
+<img src="images/css-gallery.png" alt="Testing css for gallery page">
+<img src="images/css-gallery-det.png" alt="Testing css for gallery details pages">
+<img src="images/css-news.png" alt="Testing css for news page">
+<img src="images/css-news-det.png" alt="Testing css for news details pages">
+
+### Python
+ 
+Python was tested using the official [PEP8](http://pep8online.com/)
+
+The following errors were found:
+
+<img src="images/py.png" alt="Testing python">
+
+To fix these all i had to do was extend the code onto the next line, all of these errors were caused by comments.
+
+### Manual Testing 
+
+Component | Function | Does it work? | Fixed? 
+--------- | --------- | ----------------- | ------ |
+Navbar: Home | Takes user to home page | Yes | N/A
+Navbar: News| Takes user to news page | Yes | N/A
+Navbar: Gallery | Takes user to gallery  | Yes | N/A
+Navbar: Register | Takes user to the sign up page  | Yes | N/A
+Navbar: Login | Takes user to the login page  | Yes | N/A
+Navbar: logout | Takes user to the log out page  | Yes | N/A
+Register: Sign up button | Allows user to sign up  | Yes | N/A
+Login: Sign in button | Allows user to sign in  | Yes | N/A
+Logout: Sign out button | Allows user to sign out  | Yes | N/A
+News: News post slug links | Takes user to relevent news post details page  | Yes | N/A
+Gallery: Post slug link | Takes user to relevent post details page | Yes | N/A
+Gallery posts: like and unlike button | Allows user to like or unlike a post when logged in  | Yes | N/A
+Gallery posts: Submit button | Allows user to leave a comment for the admin to validate and eventually for everyone to view on the page  | Yes | N/A
+
+## Bugs
+
+I ran into this error message:
+
+<img src="images/error.png" alt="error message">
+
+I realised that i was missing news/ from my news/< slug:slug >/ in my urls.py file, when i changed that it wored but my page wasn't rendering correctly.
+
+This is how it rendered:
+
+<img src="images/render.png" alt="image of how page was rendering incorrectly">
+
+I originally had written return render(request, "news_detail.html")
+so i tried this:
+
+<img src="images/fix2.png" alt="image of how I tried to fix">
+
+This didnt work so I also tried:
+
+<img src="images/fix.png" alt="image of how I tried to fix">
+
+Then I noticed a spelling error in the first attempt I had written new_detail.html when I was supose to write news_detail.html and then it all worked.
+
+## Credits
+
+Thankyou to tutor support for helping me figure out my bug.
+
+Gallery images from: https://www.istockphoto.com/
+
+News content: https://visitlondon.com/things-to-do/whats-on/art-and-exhibitions/top-10-exhibitions
+
+Am I responsive: http://ami.responsivedesign.is/

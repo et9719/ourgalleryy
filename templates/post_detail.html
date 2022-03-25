@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %} {% block content %}
 
 {% load crispy_forms_tags %}
@@ -5,15 +6,15 @@
 <div class="masthead">
     <div class="container">
         <div class="row g-0">
-                <h1 class="n-title text-center">
-                    {{ post.title }}
-                </h1>
+            <h1 class="n-title text-center">
+                {{ post.title }}
+            </h1>
             <div class="col-md-6 offset-md-3">
                 <!-- The featured image URL goes in the src attribute -->
                 {% if "placeholder" in post.featured_image.url %}
-                <img src="https://res.cloudinary.com/ellascloud/image/upload/v1644424356/sample.jpg" class="home-card" width="100%">
+                <img src="https://res.cloudinary.com/ellascloud/image/upload/v1644424356/sample.jpg" class="home-card image-width" alt="post featured image placeholder">
                 {% else %}
-                <img src=" {{ post.featured_image.url }} " class="home-card" width="100%">
+                <img src=" {{ post.featured_image.url }} " class="home-card image-width"  alt="post featured image">
                 {% endif %}
             </div>
         </div>
@@ -23,24 +24,20 @@
 <div class="container">
     <div class="row">
         <div class="col card mb-4  mt-3 left top  home-card">
-                <p class="card-text">
-                    <div class="card-body">
-                <!-- The post content goes inside the card-text. -->
-                <!-- Use the | safe filter inside the template tags -->
+            <div class="card-body">
                 <p class="card-text">
                     {{ post.content | safe }}
                 </p>
                 <div class="row">
-
                     <div class="col-1">
                         <strong>
                             {% if user.is_authenticated %}
                             <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
                                 {% csrf_token %}
                                 {% if liked %}
-                                    <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
-                                        <i class="fas fa-heart"></i>
-                                    </button>
+                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
+                                    <i class="fas fa-heart"></i>
+                                </button>
                                 {% else %}
                                 <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
                                     <i class="far fa-heart"></i>
@@ -51,7 +48,6 @@
                             <span><i class="far fa-heart"></i></span>
                             {% endif %}
                             <span > {{ post.number_of_likes }} </span>
-
                         </strong>
                         <!-- The number of likes goes before the closing strong tag -->
                     </div>

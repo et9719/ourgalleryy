@@ -182,6 +182,10 @@
     padding: 0;
 }
 
+.image-width {
+    width: 100%;
+}
+
 .news-title {
     margin: 5%;
 }

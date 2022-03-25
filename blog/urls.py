@@ -8,6 +8,7 @@ urlpatterns = [
     path('gallery/', views.PostList.as_view(), name='gallery'),
     path('news/', views.NewsPostList.as_view(), name='news'),
     path('<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
-    path('news/<slug:slug>/', views.NewsPostDetail.as_view(), name='news_detail'),
+    path('news/<slug:slug>/', views.NewsPostDetail.as_view(),
+         name='news_detail'),
     path('like/<slug:slug>', views.PostLike.as_view(), name='post_like'),
 ]

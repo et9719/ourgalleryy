@@ -16,10 +16,11 @@
                                 <!--If the default word placeholder is found in the url
                                 then show this default image. -->
                                 <img class="card-img-top"
-                                    src="https://res.cloudinary.com/ellascloud/image/upload/v1644424356/sample.jpg">
+                                    src="https://res.cloudinary.com/ellascloud/image/upload/v1644424356/sample.jpg"
+                                    alt="news post image">
                                 {% else %}
                                 <!-- If placeholder is not fould in the url then show the featured image. --> 
-                                <img class="card-img-top" src=" {{ newspost.featured_image.url }}">
+                                <img class="card-img-top" src=" {{ newspost.featured_image.url }}" alt="news post image">
                                 {% endif %}
                             </div>
                         </div>

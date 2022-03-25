@@ -13,10 +13,12 @@ class PostAdmin(SummernoteModelAdmin):
     search_fields = ['title', 'content']
     # Generate the slugfield automaticly from the title of a post.
     prepopulated_fields = {'slug': ('title',)}
-    # Create a filter box that you can filter posts via their status(Published, Draft).
+    # Create a filter box that you can filter posts
+    # via their status(Published, Draft).
     # or by the date they were created on.
     list_filter = ('status', 'created_on')
-    # Summernote is a simple editor on bootstrap, here we allow the user to use this
+    # Summernote is a simple editor on bootstrap,
+    # here we allow the user to use this
     # editor to create content.
     summernote_fields = ('content')
 
@@ -47,9 +49,11 @@ class NewsPostAdmin(SummernoteModelAdmin):
     search_fields = ['title', 'content']
     # Generate the slugfield automaticly from the title of a post.
     prepopulated_fields = {'slug': ('title',)}
-    # Create a filter box that you can filter posts via their status(Published, Draft).
+    # Create a filter box that you can filter posts
+    # via their status(Published, Draft).
     # or by the date they were created on.
     list_filter = ('status', 'created_on')
-    # Summernote is a simple editor on bootstrap, here we allow the user to use this
+    # Summernote is a simple editor on bootstrap,
+    # here we allow the user to use this
     # editor to create content.
     summernote_fields = ('content')
