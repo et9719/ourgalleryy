@@ -306,6 +306,8 @@ DATABASES = {
 
 Thankyou to tutor support for helping me figure out my bug.
 
+The run through project was helpful for getting me through this project I went back to see how classes were used throughout the making.
+
 Gallery images from: https://www.istockphoto.com/
 
 News content: https://visitlondon.com/things-to-do/whats-on/art-and-exhibitions/top-10-exhibitions
