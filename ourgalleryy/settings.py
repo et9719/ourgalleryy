@@ -29,7 +29,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
@@ -56,7 +56,10 @@ INSTALLED_APPS = [
     'blog',
 ]
 
+
 SITE_ID = 1
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
@@ -98,6 +101,15 @@ TEMPLATES = [
         },
     },
 ]
+
+
+# AUTHENTICATION_BACKENDS = [
+#     # Needed to login by username in Django admin, regardless of `allauth`
+#     'django.contrib.auth.backends.ModelBackend',
+
+#     # `allauth` specific authentication methods, such as login by e-mail
+#     'allauth.account.auth_backends.AuthenticationBackend',
+# ]
 
 WSGI_APPLICATION = 'ourgalleryy.wsgi.application'
 
