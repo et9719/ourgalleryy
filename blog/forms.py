@@ -1,13 +1,22 @@
-''' Imports '''''' Imports '''
+''' Imports '''
 from django import forms
-from .models import Comment
+from .models import Comment, NewsPost
 
 
 class CommentForm(forms.ModelForm):
-    ''' Add description '''
+    ''' Form to allow user to add comment '''
     class Meta:
-        ''' Add Description '''
+        ''' model used and field used '''
         # Model we want to use.
         model = Comment
         # What fields we want to use.
         fields = ('body',)
+
+class NewsForm(forms.ModelForm):
+    ''' Form to allow admin to add new newspost '''
+    class Meta:
+        ''' model used and field used '''
+        # Model we want to use.
+        model = NewsPost
+        # What fields we want to use.
+        fields = '__all__'
