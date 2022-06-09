@@ -1,9 +1,11 @@
 ''' Imports '''
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect, Http404
+from django.contrib.auth.decorators import login_required
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Post, NewsPost
+from .models import Post, NewsPost, Comment
 from .forms import CommentForm
+# , NewsForm
 
 
 class PostList(generic.ListView):
@@ -81,6 +83,19 @@ class PostDetail(View):
                 "comment_form": CommentForm()
             },
         )
+
+
+@login_required
+def delete_comment(request, comment_id):
+    ''' Delete comment '''
+    comment = Comment.objects.get(id=comment_id)
+    r = request.user
+    post = comment.post
+    if (comment.name == r.username and r.is_authenticated):
+        # delete comment
+        comment.delete()
+    # return render(request, "post_detail.html")
+    return redirect('post_detail', slug=post.slug)
 
 
 class PostLike(View):
