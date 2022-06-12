@@ -30,6 +30,12 @@
                                 <p class="card-text"></p>
                                 <p class="card-text">{{ newspost.excerpt }}</p>
                             </a>
+                            {% if request.user.is_superuser %}
+                                <small class="ml-3">
+                                    <a class="text-secondary" href="{% url 'edit_news' newspost.slug %}">Edit</a> | 
+                                    <a class="text-secondary" href="{% url 'delete_news' newspost.slug %}">Delete</a>
+                                </small>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

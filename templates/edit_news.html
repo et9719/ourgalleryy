@@ -6,19 +6,19 @@
     <div class="row">
         <div class="col-12">
             <hr>
-            <h5 class="text-muted">Add a new article</h5>
+            <h5 class="text-muted">Edit a new article</h5>
             <hr>
         </div>
     </div>
 
     <div class="row">
         <div class="col-8 offset-2">
-            <form method="POST" action="{% url 'add_news' %}" class="form mb-2" enctype="multipart/form-data">
+            <form method="POST" action="{% url 'edit_news' newspost.slug %}" class="form mb-2" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form | crispy }}
                 <div class="text-right">
                     <a class="btn btn-outline-black rounded-0" href="{% url 'home' %}">Cancel</a>
-                    <button class="btn btn-black rounded-0" type="submit">Add Article</button>
+                    <button class="btn btn-black rounded-0" type="submit">Update Article</button>
                 </div>
             </form>
         </div>            

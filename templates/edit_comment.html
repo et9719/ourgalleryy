@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %}
+
+{% load crispy_forms_tags %}
+
+<div class="row">
+    <div class="col-8 offset-2">
+        <p>Posting as: {{ user.username }}</p>
+    <form method="post" style="margin-top: 1.3em;">
+        <textarea>{{ comment.body }}</textarea>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+    </form>
+    </div>
+
+    <!-- <form method="post" style="margin-top: 1.3em;">
+        <textarea>{{ comment.body }}</textarea>
+        <input value="{{ comment.user }}" name="user">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+    </form> -->
+</div>
+
+{% endblock content %}

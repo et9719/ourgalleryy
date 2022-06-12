@@ -88,7 +88,8 @@
                     {% if user.username == comment.name %}
                         <a class="text-secondary" href="">Edit</a> | 
                         <a class="text-secondary" href="{% url 'delete_comment' comment.id %}">Delete</a>
-                    {% endif %}
+                    <!-- {% url 'edit_comment' comment.id %} -->
+                        {% endif %}
                     <hr>
                 </div>
                 <!-- Our for loop ends here -->

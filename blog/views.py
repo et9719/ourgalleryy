@@ -1,11 +1,10 @@
 ''' Imports '''
-from django.shortcuts import render, get_object_or_404, reverse, redirect, Http404
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib.auth.decorators import login_required
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post, NewsPost, Comment
-from .forms import CommentForm
-# , NewsForm
+from .forms import CommentForm, NewsForm
 
 
 class PostList(generic.ListView):
@@ -85,6 +84,81 @@ class PostDetail(View):
         )
 
 
+# @login_required
+# def edit_comment(request, comment_id):
+#     ''' Edit comment '''
+#     comment = Comment.objects.get(id=comment_id)
+#     post = comment.post
+#     if request.method == 'POST':
+#         if comment_id:
+#             form = CommentForm(instance=Comment.objects.get(id=comment_id), data=request.POST)
+#             if comment_form.is_valid():
+#                 comment_form.instance.email = request.user.email
+#                 comment_form.instance.name = request.user.username
+#                 comment = comment_form.save(commit=False)
+#                 comment.post = post
+#                 comment.save()
+#         else:
+#             form = CommentForm(data=request.POST)
+#     return redirect('post_detail', slug=post.slug)
+
+
+    # comment = Comment.objects.get(id=comment_id)
+    # r = request.user
+    # post = comment.post
+    #  # get product
+    # comment = get_object_or_404(Comment, id=comment_id)
+    # if (comment.name == r.username and r.is_authenticated):
+    #     # Get the data from the form.
+    #     comment_form = CommentForm(data=request.POST)
+    #     # If all fields have been completed, process the comment.
+    #     if comment_form.is_valid():
+    #         comment_form.instance.email = request.user.email
+    #         comment_form.instance.name = request.user.username
+    #         comment = comment_form.save(commit=False)
+    #         comment.post = post
+    #         comment.save()
+    # # If form is not valid, return empty comment form.
+    # else:
+    #     comment_form = CommentForm()
+
+    # # return render(request, "post_detail.html")
+    # return redirect('post_detail', slug=post.slug)
+
+
+# def edit_comment(request, comment_id):
+#     ''' Edit users comment '''
+#     comment = Comment.objects.get(id=comment_id)
+#     r = request.user
+#     post = comment.post
+#     form = CommentForm(comment)
+#     if (comment.name == r.username and r.is_authenticated):
+#         if request.method == 'POST':
+#             # form = CommentForm(request.POST, instance=r)
+#             # if form.is_valid():
+#             #     form.save()
+#             #     return redirect('post_detail', slug=post.slug)
+#             form = CommentForm(request.POST, request.FILES, instance=r)
+#             if form.is_valid():
+#                 form.save()
+#                 return redirect(reverse('post_detail', args=[post.id]))
+#     return render(request, 'edit_comment.html', {'comment':comment})
+
+
+# def edit_comment(request, comment_id):
+#     ''' Edit '''
+#     comment = get_object_or_404(Comment, id=comment_id)
+#     post = comment.post
+#     post = get_object_or_404(Post, slug=post.slug)
+#     form = CommentForm(comment)
+#     if request.method == 'POST':
+#         form = CommentForm(request.POST, instance=comment.user)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('post_detail', slug=post.slug)
+#     return render(request, 'edit-comment.html', {'form':form})
+
+
 @login_required
 def delete_comment(request, comment_id):
     ''' Delete comment '''
@@ -94,7 +168,6 @@ def delete_comment(request, comment_id):
     if (comment.name == r.username and r.is_authenticated):
         # delete comment
         comment.delete()
-    # return render(request, "post_detail.html")
     return redirect('post_detail', slug=post.slug)
 
 
@@ -146,3 +219,61 @@ class NewsPostDetail(View):
                 "newspost": newspost,
             }
         )
+
+
+@login_required
+def add_news(request):
+    """ Add a news article """
+    # if user is not admin show error message
+    if not request.user.is_superuser:
+        return redirect(reverse('home'))
+    if request.method == 'POST':
+        # if form is filled out correctly save
+        # news and show success message.
+        form = NewsForm(request.POST, request.FILES)
+        if form.is_valid():
+            news = form.save()
+            return redirect(reverse('news_detail', args=[news.slug]))
+    else:
+        form = NewsForm()
+
+    template = 'add_news.html'
+    context = {
+            'form': form,
+        }
+    return render(request, template, context)
+
+
+@login_required
+def edit_news(request, slug):
+    """ Add a news article """
+    # if user is not admin show error message
+    if not request.user.is_superuser:
+        return redirect(reverse('home'))
+    # get news
+    newspost = get_object_or_404(NewsPost, slug=slug)
+    if request.method == 'POST':
+        # if form is filled out correctly save
+        form = NewsForm(request.POST, request.FILES, instance=newspost)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('news_detail', args=[newspost.slug]))
+    else:
+        form = NewsForm(instance=newspost)
+
+    template = 'edit_news.html'
+    context = {
+            'form': form,
+            'newspost': newspost,
+        }
+    return render(request, template, context)
+
+
+@login_required
+def delete_news(request, slug):
+    ''' Delete news article '''
+    newspost = get_object_or_404(NewsPost, slug=slug)
+    if (request.user.is_superuser):
+        # delete news article
+        newspost.delete()
+    return redirect(reverse('news'))
