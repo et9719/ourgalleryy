@@ -107,6 +107,16 @@ def add_post(request):
 
 
 @login_required
+def delete_post(request, slug):
+    ''' Delete post '''
+    post = get_object_or_404(Post, slug=slug)
+    if (post.artist == request.user and request.user.is_authenticated):
+        # delete post
+        post.delete()
+    return redirect(reverse('gallery'))
+
+
+@login_required
 def delete_comment(request, comment_id):
     ''' Delete comment '''
     comment = Comment.objects.get(id=comment_id)
@@ -115,7 +125,7 @@ def delete_comment(request, comment_id):
     if (comment.name == r.username and r.is_authenticated):
         # delete comment
         comment.delete()
-    return redirect('post_detail', slug=post.slug)
+    return redirect(reverse('gallery'))
 
 
 class PostLike(View):

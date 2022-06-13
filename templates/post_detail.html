@@ -28,6 +28,12 @@
                 <p class="card-text">
                     {{ post.content | safe }}
                 </p>
+                {% if post.artist == request.user %}
+                    <small class="ml-3">
+                        <a class="text-secondary" href="">Edit</a> | 
+                        <a class="text-secondary" href="{% url 'delete_post' post.slug %}">Delete</a>
+                    </small>
+                {% endif %}
                 <div class="row">
                     <div class="col-1">
                         <strong>
@@ -89,7 +95,7 @@
                         <a class="text-secondary" href="">Edit</a> | 
                         <a class="text-secondary" href="{% url 'delete_comment' comment.id %}">Delete</a>
                     <!-- {% url 'edit_comment' comment.id %} -->
-                        {% endif %}
+                    {% endif %}
                     <hr>
                 </div>
                 <!-- Our for loop ends here -->
