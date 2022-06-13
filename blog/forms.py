@@ -1,6 +1,6 @@
 ''' Imports '''
 from django import forms
-from .models import Comment, NewsPost
+from .models import Comment, NewsPost, Post
 
 
 class CommentForm(forms.ModelForm):
@@ -21,3 +21,21 @@ class NewsForm(forms.ModelForm):
         model = NewsPost
         # What fields we want to use.
         fields = '__all__'
+
+
+class PostForm(forms.ModelForm):
+    ''' Form to allow users to add new post '''
+    class Meta:
+        ''' model used and field used '''
+        # Model we want to use.
+        model = Post
+        # What fields we want to use.
+        fields = (
+            'title',
+            'slug',
+            'artist',
+            'content',
+            'featured_image',
+            'excerpt',
+            'status'
+        )
