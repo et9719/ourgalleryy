@@ -10,6 +10,7 @@ urlpatterns = [
     path('add_news/', views.add_news, name='add_news'),
     path('add_post/', views.add_post, name='add_post'),
     path('edit_news/<slug:slug>/', views.edit_news, name='edit_news'),
+    path('edit_post/<slug:slug>/', views.edit_post, name='edit_post'),
     path('delete_news/<slug:slug>/', views.delete_news, name='delete_news'),
     path('delete_post/<slug:slug>/', views.delete_post, name='delete_post'),
     path('<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),

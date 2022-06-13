@@ -107,6 +107,28 @@ def add_post(request):
 
 
 @login_required
+def edit_post(request, slug):
+    """ Add a post """
+    # get post
+    post = get_object_or_404(Post, slug=slug)
+    if request.method == 'POST':
+        # if form is filled out correctly save
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('post_detail', args=[post.slug]))
+    else:
+        form = PostForm(instance=post)
+
+    template = 'edit_post.html'
+    context = {
+            'form': form,
+            'post': post,
+        }
+    return render(request, template, context)
+
+
+@login_required
 def delete_post(request, slug):
     ''' Delete post '''
     post = get_object_or_404(Post, slug=slug)
