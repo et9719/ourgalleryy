@@ -123,9 +123,9 @@ This helped me break the project down into smaller tasks that would be more mana
 ### Navigation Bar
 
 - The navigation bar contains the links needed to use the website easily. This changes how it looks depending on a couple of things, if the user is logged in or out but also depending on the size of the screen it is being viewed on.
-<img src="images/nav.png" alt="Navigation function">
-<img src="images/nav2.png" alt="Navigation function">
-<img src="images/nav3.png" alt="Navigation function">
+<img src="images/nav-f.png" alt="Navigation function">
+<img src="images/drop.png" alt="Navigation function">
+<img src="images/dropin.png" alt="Navigation function">
 
 ### Links
 
@@ -139,17 +139,35 @@ This helped me break the project down into smaller tasks that would be more mana
 
 <img src="images/news-func.png" alt="news post function">
 
+- If the user is an admin they will see the options to delete or edit a news post.
+<img src="images/news-f.png" alt="news post function">
+
+- If the user is an admin they can edit a news post.
+<img src="images/news-edit.png" alt="news post edit function">
+
 ### Gallery Posts
 
 -  Each gallery post contains a link in its title, these links take the user to the relevant gallery post detail page to read more. 
 
 <img src="images/gallery-func.png" alt="gallery post function">
 
+- If the post belongs to this user they will see the options to edit or delete the post.
+<img src="images/gallery.png" alt="gallery post function">
+
+- The post edit page allows the user that owns the post to make changes.
+<img src="images/post-edit.png" alt="gallery post edit function">
+
 ### Comments
 
-- Within each gallery post details page the is a comment section, this allows the user to interact with the site, and have conversations about the art shown.
+- Within each gallery post details page there is a comment section, this allows the user to interact with the site, and have conversations about the art shown.
 
 <img src="images/comment.png" alt="comment function">
+
+- If the comment belongs to the user they will see the options to edit or delete the comment.
+<img src="images/comment-f.png" alt="comment function">
+
+- If edit is clicked by the user they will be taken to the edit comment page to change their comment.
+<img src="images/edit-comment.png" alt="comment edit function">
 
 ### Like
 
@@ -190,6 +208,7 @@ HTML was tested using the official [W3C validator](https://validator.w3.org/nu/)
 The following errors/warnings were found:
 
 <img src="images/html-home.png" alt="Testing html for home page">
+<img src="images/hmtl-home1.png" alt="Testing html for home page">
 
 1. lang missing from <html> tag.
     - To fix this i just added lang="en" to the <html> tag.
@@ -198,6 +217,11 @@ Retested: Warning cleared
 
 2. An image must have an alt attribute.
     - For both of these errors I added and alt attribute to the images that have details of the image just in case the image doesn't load.
+
+Retested: Error cleared
+
+3. Element div not allowed as child on ul.
+    - I Added an li around the dropdown div.
 
 Retested: Error cleared
 
@@ -223,6 +247,8 @@ Retested: Error cleared
 
 2. No p element in scope but a p end tag seen.
     - i searched for a stray </p> but none were found in either file.
+
+
 
 ### CSS
  
