@@ -150,7 +150,6 @@ def edit_comment(request, comment_id):
     return render(request, template, context)
 
 
-
 @login_required
 def delete_post(request, slug):
     ''' Delete post '''

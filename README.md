@@ -32,7 +32,7 @@ The admin of the site will be able to create new posts to show different pieces 
 6. [Bugs](#bugs)
 7. [Deployment](#deployment)
 8. [Credits](#credits)
-  
+
 ## Wireframes
 
 ### Home 
@@ -49,6 +49,8 @@ The admin of the site will be able to create new posts to show different pieces 
 
 ### News Details
 <img src="images/wire-news-det.png" alt="wireframe for news details page">
+
+
 
 ## User Stories
 
@@ -248,19 +250,43 @@ To fix these all I had to do was extend the code onto the next line, all of thes
 
 Component | Function | Does it work? | Fixed? 
 --------- | --------- | ----------------- | ------ |
+Logo | Takes user to home page | Yes | N/A
 Navbar: Home | Takes user to home page | Yes | N/A
 Navbar: News| Takes user to news page | Yes | N/A
 Navbar: Gallery | Takes user to gallery  | Yes | N/A
+Navbar: My Account | Show user drop down menu, if user is not signed in it should show login, register. If user is an admin it should show add news, add post and log out. if loged in but not admin user should see log out and add post. | Yes | N/A
 Navbar: Register | Takes user to the sign up page  | Yes | N/A
 Navbar: Login | Takes user to the login page  | Yes | N/A
 Navbar: logout | Takes user to the log out page  | Yes | N/A
-Register: Sign up button | Allows user to sign up  | Yes | N/A
-Login: Sign in button | Allows user to sign in  | Yes | N/A
-Logout: Sign out button | Allows user to sign out  | Yes | N/A
+Navbar: Add post | Takes user to the add post page  | Yes | N/A
+Navbar: Add news | Takes admin to the add news page  | Yes | N/A
+Home: see the latest exhibition | Take user to news page | Yes | N/A
+Home: Head over to gallery | Take user to gallery page | Yes | N/A
 News: News post slug links | Takes user to relevant news post details page  | Yes | N/A
+News: Edit | If user is an admin they should see an edit button which will take them to the edit news page  | Yes | N/A
+News: Delete | If user is an admin they should see an delete button which will delete that news article | Yes | N/A
+News Detail: Edit | If user is an admin they should see an edit button which will take them to the edit news page  | Yes | N/A
+News Detail: Delete | If user is an admin they should see an delete button which will delete that news article | Yes | N/A
 Gallery: Post slug link | Takes user to relevant post details page | Yes | N/A
-Gallery posts: like and unlike button | Allows user to like or unlike a post when logged in  | Yes | N/A
-Gallery posts: Submit button | Allows user to leave a comment for the admin to validate and eventually for everyone to view on the page  | Yes | N/A
+Gallery: Edit | If user is creator of post they should see an edit button which will take them to the edit their post | Yes | N/A
+Gallery: Delete | If user is creator of the post they should see an delete button which will delete that post | Yes | N/A
+Post Detail: Edit | If user is creator of post they should see an edit button which will take them to the edit their post | Yes | N/A
+Post Detail: Delete | If user is creator of the post they should see an delete button which will delete that post | Yes | N/A
+Post Detail: like and unlike button | Allows user to like or unlike a post when logged in  | Yes | N/A
+Post Detail: Submit button | Allows user to leave a comment for the admin to validate and eventually for everyone to view on the page  | Yes | N/A
+Post Detail: Login | if user is not logged in the will see a message asking them to login if they want to make a comment, this should take them to login page | Yes | N/A
+Add News: Choose file | This should allow the admin to pick a picture for their news post | Yes |N/A
+Add News: Cancel | This should redirect the admin to home page | Yes |N/A
+Add News: Add Article | This should allow the admin to add a news post | Yes |N/A
+Add Post: Choose file | This should allow the user to pick a picture for their post | Yes |N/A
+Add Post: Cancel | This should redirect the user to home page | Yes |N/A
+Add Post: Add Post | This should allow the user to add a post | Yes |N/A
+Register: Sign up button | Allows user to sign up  | Yes | N/A
+Register: Sign in | This link will take the user to the dign in page | Yes | N/A
+Login: Sign in button | Allows user to sign in  | Yes | N/A
+Login: Sign up | Takes user to sign up page | Yes | N/A
+Logout: Sign out button | Allows user to sign out  | Yes | N/A
+
 
 ## Bugs
 
