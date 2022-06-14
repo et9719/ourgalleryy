@@ -1,23 +1,27 @@
-{% extends 'base.html' %} {% block content %}
+{% extends "base.html" %} {% block content %}
 
 {% load crispy_forms_tags %}
 
-<div class="row">
-    <div class="col-8 offset-2">
-        <p>Posting as: {{ user.username }}</p>
-    <form method="post" style="margin-top: 1.3em;">
-        <textarea>{{ comment.body }}</textarea>
-        {% csrf_token %}
-        <button type="submit" class="btn btn-signup btn-lg">Submit</button>
-    </form>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <hr>
+            <h5 class="text-muted">Edit comment</h5>
+            <hr>
+        </div>
     </div>
 
-    <!-- <form method="post" style="margin-top: 1.3em;">
-        <textarea>{{ comment.body }}</textarea>
-        <input value="{{ comment.user }}" name="user">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-signup btn-lg">Submit</button>
-    </form> -->
+    <div class="row">
+        <div class="col-8 offset-2">
+            <form method="POST" action="{% url 'edit_comment' comment.id %}" class="form mb-2" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="text-right">
+                    <a class="btn btn-outline-black rounded-0" href="{% url 'home' %}">Cancel</a>
+                    <button class="btn btn-black rounded-0" type="submit">Update comment</button>
+                </div>
+            </form>
+        </div>            
+    </div>
 </div>
-
-{% endblock content %}
+{%endblock%}

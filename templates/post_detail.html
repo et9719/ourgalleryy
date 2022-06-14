@@ -92,7 +92,7 @@
                     <!-- The body of the comment goes before the | -->
                     {{ comment.body | linebreaks }}
                     {% if user.username == comment.name %}
-                        <a class="text-secondary" href="">Edit</a> | 
+                        <a class="text-secondary" href="{% url 'edit_comment' comment.id %}">Edit</a> | 
                         <a class="text-secondary" href="{% url 'delete_comment' comment.id %}">Delete</a>
                     <!-- {% url 'edit_comment' comment.id %} -->
                     {% endif %}

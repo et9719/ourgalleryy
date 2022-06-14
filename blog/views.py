@@ -129,6 +129,29 @@ def edit_post(request, slug):
 
 
 @login_required
+def edit_comment(request, comment_id):
+    """ Add a comment """
+    # get comment
+    comment = Comment.objects.get(id=comment_id)
+    if request.method == 'POST':
+        # if form is filled out correctly save
+        form = CommentForm(request.POST, request.FILES, instance=comment)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('gallery'))
+    else:
+        form = CommentForm(instance=comment)
+
+    template = 'edit_comment.html'
+    context = {
+            'form': form,
+            'comment': comment,
+        }
+    return render(request, template, context)
+
+
+
+@login_required
 def delete_post(request, slug):
     ''' Delete post '''
     post = get_object_or_404(Post, slug=slug)

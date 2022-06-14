@@ -11,6 +11,7 @@ urlpatterns = [
     path('add_post/', views.add_post, name='add_post'),
     path('edit_news/<slug:slug>/', views.edit_news, name='edit_news'),
     path('edit_post/<slug:slug>/', views.edit_post, name='edit_post'),
+    path('edit/<int:comment_id>/', views.edit_comment, name='edit_comment'),
     path('delete_news/<slug:slug>/', views.delete_news, name='delete_news'),
     path('delete_post/<slug:slug>/', views.delete_post, name='delete_post'),
     path('<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
@@ -18,5 +19,4 @@ urlpatterns = [
          name='news_detail'),
     path('like/<slug:slug>', views.PostLike.as_view(), name='post_like'),
     path('delete/<int:comment_id>/', views.delete_comment, name='delete_comment'),
-    # path('edit/<int:comment_id>/', views.edit_comment, name='edit_comment'),
 ]
