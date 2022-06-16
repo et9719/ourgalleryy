@@ -5,6 +5,7 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post, NewsPost, Comment
 from .forms import CommentForm, NewsForm, PostForm
+from django.utils.text import slugify
 
 
 class PostList(generic.ListView):
@@ -91,9 +92,11 @@ def add_post(request):
     if not request.user.is_authenticated:
         return redirect(reverse('account_login'))
     if request.method == 'POST':
-        # if form is filled out correctly save post
+        # if form is filled out correctly make the artist the user logged in and save post
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
+            form.instance.slug = slugify(Post.title)
+            form.instance.artist = request.user
             post = form.save()
             return redirect(reverse('post_detail', args=[post.slug]))
     else:
@@ -233,6 +236,7 @@ def add_news(request):
         # news and show success message.
         form = NewsForm(request.POST, request.FILES)
         if form.is_valid():
+            form.instance.slug = slugify(NewsPost.title)
             news = form.save()
             return redirect(reverse('news_detail', args=[news.slug]))
     else:

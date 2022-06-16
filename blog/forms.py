@@ -20,7 +20,14 @@ class NewsForm(forms.ModelForm):
         # Model we want to use.
         model = NewsPost
         # What fields we want to use.
-        fields = '__all__'
+        fields = (
+            'title',
+            'description',
+            'content',
+            'featured_image',
+            'excerpt',
+            'status'
+        )
 
 
 class PostForm(forms.ModelForm):
@@ -32,8 +39,6 @@ class PostForm(forms.ModelForm):
         # What fields we want to use.
         fields = (
             'title',
-            'slug',
-            'artist',
             'content',
             'featured_image',
             'excerpt',

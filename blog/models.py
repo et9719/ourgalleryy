@@ -2,6 +2,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.utils.text import slugify
 
 # Defining status for the post model.
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -26,8 +27,12 @@ class Post(models.Model):
         ''' Define how you want to order the posts on the site '''
         ordering = ['-created_on']
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Post, self).save(*args, **kwargs)
+
     def __str__(self):
-        return self.title
+        return self.title, self.artist
 
     def number_of_likes(self):
         ''' Add 1 to likes everytime a post is liked by a user '''
@@ -65,6 +70,10 @@ class NewsPost(models.Model):
     excerpt = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(NewsPost, self).save(*args, **kwargs)
 
     class Meta:
         ''' Define how you want to order the posts on the site '''
