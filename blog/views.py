@@ -92,7 +92,8 @@ def add_post(request):
     if not request.user.is_authenticated:
         return redirect(reverse('account_login'))
     if request.method == 'POST':
-        # if form is filled out correctly make the artist the user logged in and save post
+        # if form is filled out correctly make the artist
+        # the user logged in and save post
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             form.instance.slug = slugify(Post.title)

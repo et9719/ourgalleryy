@@ -32,7 +32,7 @@ class Post(models.Model):
         super(Post, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.title, self.artist
+        return self.title
 
     def number_of_likes(self):
         ''' Add 1 to likes everytime a post is liked by a user '''
@@ -56,7 +56,7 @@ class Comment(models.Model):
 
     def __str__(self):
         ''' How we want the user to see a comment '''
-        return f"Comment {self.body} by {self.name}"
+        return f'Comment {self.body} by {self.name}'
 
 
 class NewsPost(models.Model):
