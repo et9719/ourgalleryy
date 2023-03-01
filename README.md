@@ -8,7 +8,7 @@ The admin of the site will be able to create new posts to show different pieces 
 
 <img src="images/responsive.png" alt="Live website image"> 
 
-[Click here to go to the live website!](https://ourgalleryy.herokuapp.com/) 
+[Click here to go to the live website!](https://ourgalleryyy.onrender.com) 
 
 1. [Wireframes](#wireframes)
 2. [User Stories](#user-stories)
